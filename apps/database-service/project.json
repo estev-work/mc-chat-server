@@ -1,0 +1,52 @@
+{
+    "name": "database-service",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/database-service/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/apps/database-service",
+                "main": "apps/database-service/src/main.ts",
+                "tsConfig": "apps/database-service/tsconfig.app.json",
+                "assets": ["apps/database-service/src/assets"],
+                "webpackConfig": "apps/database-service/webpack.config.js"
+            },
+            "configurations": {
+                "development": {},
+                "production": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "database-service:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "database-service:build:development"
+                },
+                "production": {
+                    "buildTarget": "database-service:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/database-service/jest.config.ts"
+            }
+        }
+    },
+    "tags": []
+}

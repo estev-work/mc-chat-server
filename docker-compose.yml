@@ -1,0 +1,22 @@
+version: '3.9'
+networks:
+  chat-server:
+    driver: bridge
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "${MYSQL_HOST_PORT}:${MYSQL_DOCKER_CONTAINER_PORT}"
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      SERVICE_TAGS: ${TAG}
+      SERVICE_NAME: mysql
+    networks:
+      - chat-server
