@@ -1,7 +1,8 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { UpdateChatCommand } from './update-chat.command';
-import { ChatRoomAggregate, ChatRoomRepository } from '../../../domain';
+import { ChatRoomAggregate } from '../../../domain';
 import { BadRequestException, Logger } from '@nestjs/common';
+import { ChatRoomRepository } from '../../../infrastructure';
 
 @CommandHandler(UpdateChatCommand)
 export class UpdateChatCommandHandler

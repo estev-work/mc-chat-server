@@ -1,5 +1,4 @@
-import { ChatRoomAggregate } from '../model';
-import { IChatRoom } from '../interfaces';
+import { ChatRoomAggregate, IChatRoom } from '../../domain';
 
 export abstract class ChatRoomRepository {
     abstract save(chatRoom: IChatRoom): Promise<ChatRoomAggregate>;

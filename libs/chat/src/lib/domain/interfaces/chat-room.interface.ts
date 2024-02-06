@@ -1,4 +1,4 @@
-import { ChatType } from '../value-objects/chat-type.vo';
+import { ChatType } from '../value-objects';
 import { IMember, IMessage } from './index';
 
 export interface IChatRoom {

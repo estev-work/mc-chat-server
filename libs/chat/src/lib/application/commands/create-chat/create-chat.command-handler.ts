@@ -1,7 +1,8 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateChatCommand } from './create-chat.command';
-import { ChatRoomAggregate, ChatRoomRepository } from '../../../domain';
+import { ChatRoomAggregate } from '../../../domain';
 import { BadRequestException } from '@nestjs/common';
+import { ChatRoomRepository } from '../../../infrastructure';
 
 @CommandHandler(CreateChatCommand)
 export class CreateChatCommandHandler
