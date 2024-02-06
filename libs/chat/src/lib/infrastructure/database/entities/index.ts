@@ -3,4 +3,9 @@ import { MessageEntity } from './message.entity';
 import { MemberEntity } from './member.entity';
 import { UserEntity } from './user.entity';
 
-export const ENTITYES = [ChatRoomEntity, MessageEntity, MemberEntity, UserEntity];
+export const ENTITIES = [
+    ChatRoomEntity,
+    MessageEntity,
+    MemberEntity,
+    UserEntity,
+];

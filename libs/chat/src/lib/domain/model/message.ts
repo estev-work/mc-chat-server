@@ -1,9 +1,9 @@
-import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import { ChatRoomAggregate } from './chat-room.aggregate';
 import { User } from './user';
+import { v4 as uuid } from 'uuid';
 
 export class Message {
-    public readonly id: string = randomStringGenerator();
+    public readonly id: string = uuid();
     public chatRoom!: ChatRoomAggregate;
     public user!: User;
     public text: string;

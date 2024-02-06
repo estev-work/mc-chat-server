@@ -1,6 +1,5 @@
 import { Member } from './member';
 import { Message } from './message';
-import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import {
     IsArray,
     IsEnum,
@@ -11,22 +10,23 @@ import {
 } from 'class-validator';
 import { ChatRoomServices } from '../services';
 import { DomainError } from '@common/errors/domain.error';
-import { ChatType } from '../value-objects';
+import { ChatTypeEnum } from '../value-objects';
 import { IChatRoom } from '../interfaces';
+import { v4 as uuid } from 'uuid';
 
 export class ChatRoomAggregate extends ChatRoomServices {
-    @IsUUID()
-    id: string = randomStringGenerator();
+    @IsUUID(4)
+    id: string = uuid();
 
     @IsString()
     @IsNotEmpty()
     name = 'unknown';
 
-    @IsEnum(ChatType)
-    type: ChatType = ChatType.personal;
+    @IsEnum(ChatTypeEnum)
+    type: ChatTypeEnum = ChatTypeEnum.personal;
 
     @IsNotEmpty()
-    creator!: Member;
+    creator: Member = Member.create({});
 
     @IsArray()
     members: Member[] = [];

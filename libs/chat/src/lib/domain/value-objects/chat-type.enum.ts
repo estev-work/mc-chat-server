@@ -1,4 +1,4 @@
-export enum ChatType {
+export enum ChatTypeEnum {
     personal,
     group,
 }

@@ -1,2 +1,2 @@
-export * from './chat-type.vo';
+export * from './chat-type.enum';
 export * from './role.vo';

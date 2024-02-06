@@ -10,10 +10,17 @@ import {
     chatRoomFacadeFactory,
     ChatRoomRepository,
     ChatRoomTypeormAdapter,
+    ENTITIES,
 } from './infrastructure';
+import { ProvidersModule } from './providers';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-    imports: [CqrsModule],
+    imports: [
+        CqrsModule,
+        ProvidersModule,
+        TypeOrmModule.forFeature([...ENTITIES]),
+    ],
     providers: [
         ...CHAT_COMMANDS_HANDLERS,
         ...CHAT_QUERIES_HANDLERS,
