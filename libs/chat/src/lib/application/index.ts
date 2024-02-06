@@ -1,4 +1,4 @@
-export * from './chat-room-facade.service';
+export * from './chat-room.facade';
 export * from './commands';
 export * from './queries';
 export * from './events';

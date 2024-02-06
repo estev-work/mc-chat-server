@@ -4,8 +4,13 @@ import {
     CHAT_COMMANDS_HANDLERS,
     CHAT_EVENTS_HANDLERS,
     CHAT_QUERIES_HANDLERS,
-    ChatFacade,
+    ChatRoomFacade,
 } from './application';
+import {
+    chatRoomFacadeFactory,
+    ChatRoomRepository,
+    ChatRoomTypeormAdapter,
+} from './infrastructure';
 
 @Module({
     imports: [CqrsModule],
@@ -13,8 +18,17 @@ import {
         ...CHAT_COMMANDS_HANDLERS,
         ...CHAT_QUERIES_HANDLERS,
         ...CHAT_EVENTS_HANDLERS,
+        {
+            provide: ChatRoomFacade,
+            inject: [CommandBus, QueryBus, EventBus],
+            useFactory: chatRoomFacadeFactory,
+        },
+        {
+            provide: ChatRoomRepository,
+            useClass: ChatRoomTypeormAdapter,
+        },
     ],
-    exports: [ChatFacade],
+    exports: [ChatRoomFacade],
 })
 export class ChatModule implements OnModuleInit {
     constructor(

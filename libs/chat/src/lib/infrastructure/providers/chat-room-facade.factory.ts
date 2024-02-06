@@ -1,5 +1,5 @@
 import { CommandBus, EventBus, QueryBus } from '@nestjs/cqrs';
-import { ChatRoomFacade } from '../../application/chat-room-facade.service';
+import { ChatRoomFacade } from '../../application';
 
 export const chatRoomFacadeFactory = (
     commandBus: CommandBus,
